@@ -9,12 +9,16 @@ let button;
 let attempts = 0;
 let avg = "~";
 let totalScores = 0;
+let bigText = 32;
+let smallText = 24;
+let padding = 10;
 
 function setup() {
   canvas = createCanvas(400, 600);
   canvas.parent("sketch");
-  boxWidth = 400 / gridSize;
-  boxHeight = 400 / gridSize;
+
+  boxWidth = (width - padding) / gridSize;
+  boxHeight = (width - padding) / gridSize;
 
   keys = createVector(floor(random(gridSize)), floor(random(gridSize)));
 
@@ -72,10 +76,12 @@ function draw() {
 
   fill(0);
 
-  textSize(32);
+  textSize(bigText);
 
-  text("Guesses: " + guesses, 100, 475, 100, 100);
-  text("Avg: " + avg, 300, 475, 50, 100);
+  text("Guesses: " + guesses, 125, 475, 100, 100);
+  text("Avg: " + avg, width - 100, 475, 50, 100);
+  textSize(smallText);
+  text("click anywhere to start/restart", width / 2, height - 5, width, 75);
 }
 
 function mouseClicked() {
@@ -94,6 +100,11 @@ function mouseClicked() {
         }
       }
     }
+    // if (found) {
+    //   for (let i = 0; i < boxes.length; i++) {
+    //     boxes[i].flipped = true;
+    //   }
+    // }
   }
 }
 
@@ -101,8 +112,8 @@ class box {
   constructor(i, j) {
     this.gridPos = createVector(i, j);
     this.realPos = createVector(
-      this.gridPos.x * boxWidth + boxWidth / 2,
-      this.gridPos.y * boxHeight + boxHeight / 2
+      padding / 2 + (this.gridPos.x * boxWidth + boxWidth / 2),
+      padding / 2 + (this.gridPos.y * boxHeight + boxHeight / 2)
     );
     this.generateNewProps();
   }
@@ -111,8 +122,6 @@ class box {
     this.distKeys = this.manhatten();
     this.hiddenCol = this.calcCol();
     this.col = color("#FFFFF");
-    this.width = boxWidth;
-    this.height = boxHeight;
     this.flipped = false;
   }
 
@@ -154,16 +163,10 @@ class box {
 
     if (this.flipped) {
       fill(this.hiddenCol);
-      rect(
-        this.realPos.x,
-        this.realPos.y,
-        this.width - 10,
-        this.height - 10,
-        5
-      );
+      rect(this.realPos.x, this.realPos.y, boxWidth - 10, boxHeight - 10, 5);
     } else {
       fill(this.col);
-      rect(this.realPos.x, this.realPos.y, this.width, this.height, 5);
+      rect(this.realPos.x, this.realPos.y, boxWidth, boxHeight, 5);
     }
   }
 
