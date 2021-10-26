@@ -12,10 +12,12 @@ let totalScores = 0;
 let bigText = 32;
 let smallText = 24;
 let padding = 10;
+let dragging = false;
 
 function setup() {
   canvas = createCanvas(400, 600);
   canvas.parent("sketch");
+  canvas.mouseClicked(eventMouse);
 
   boxWidth = (width - padding) / gridSize;
   boxHeight = (width - padding) / gridSize;
@@ -86,7 +88,11 @@ function draw() {
   text("click anywhere to start/restart", width / 2, height - 5, width, 75);
 }
 
-function mouseClicked() {
+// function mouseClicked() {
+
+// }
+
+function eventMouse() {
   if (found) {
     reset();
   } else {
@@ -96,7 +102,6 @@ function mouseClicked() {
           boxes[i].flipped = true;
           guesses++;
         }
-
         if (boxes[i].distKeys == 0) {
           found = true;
         }
