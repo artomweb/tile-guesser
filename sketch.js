@@ -40,6 +40,8 @@ function setup() {
   // button.mousePressed(reset);
 
   // noLoop();
+
+  textFont("Arvo");
 }
 
 function reset() {
