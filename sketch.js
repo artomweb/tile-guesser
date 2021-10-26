@@ -86,7 +86,7 @@ function draw() {
   text("click anywhere to start/restart", width / 2, height - 5, width, 75);
 }
 
-function mouseClicked() {
+function mousePressed() {
   if (found) {
     reset();
   } else {
