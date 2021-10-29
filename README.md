@@ -7,3 +7,7 @@ A game consisting of an 8x8 grid where the player attempts to select the yellow 
 The colors are computed using the Manhattan distance of that square to the yellow square.
 
 ![filled](./filledGrid.png)
+
+## A graph of grid size vs average number of guesses
+
+![chart](./chart.png)
