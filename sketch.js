@@ -1,4 +1,4 @@
-let gridSize = 16;
+let gridSize = 8;
 let boxWidth;
 let boxHeight;
 let keys;
@@ -48,7 +48,6 @@ function setup() {
 function reset() {
     if (found) {
         attempts++;
-        console.log(attempts);
         totalScores += guesses;
         avg = round(totalScores / attempts, 1);
     }
