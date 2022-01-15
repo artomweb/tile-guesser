@@ -1,34 +1,37 @@
 html,
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
+
 canvas {
-  display: block;
-  position: relative;
-  /* border: 2px solid black; */
-  max-width: 600px !important;
-  height: auto !important;
+    display: block;
+    position: relative;
+    /* border: 2px solid black; */
+    max-width: 600px !important;
+    height: auto !important;
 }
 
 #sketch {
-  min-height: 100vh; /*vertical center*/
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
-  flex-direction: column;
+    min-height: 100vh;
+    /*vertical center*/
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    flex-direction: column;
 }
 
 .title {
-  font-family: "Arvo", serif;
-  font-weight: 700;
-  font-size: 1.8em;
-  padding: 5vh 0;
+    font-family: "Arvo", serif;
+    font-weight: 700;
+    font-size: 1.8em;
+    padding: 5vh 0;
+    text-align: center;
 }
 
 @media (max-width: 485px) {
-  canvas {
-    max-width: 95% !important;
-  }
+    canvas {
+        max-width: 95% !important;
+    }
 }
