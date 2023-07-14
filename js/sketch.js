@@ -4,7 +4,7 @@ let key;
 let button;
 
 let gridSize = 8;
-let boxes = [];
+let tiles = [];
 let guesses = 0;
 let found = false;
 let attempts = 0;
@@ -19,15 +19,15 @@ function setup() {
   canvas.parent("sketch");
   canvas.mouseClicked(eventMouse);
 
-  boxWidth = (width - padding) / gridSize;
-  boxHeight = (width - padding) / gridSize;
+  let tileWidth = (width - padding) / gridSize;
+  let tileHeight = (width - padding) / gridSize;
 
   key = createVector(floor(random(gridSize)), floor(random(gridSize)));
 
   for (i = 0; i < gridSize; i++) {
     for (j = 0; j < gridSize; j++) {
-      let boxTemp = new Box(i, j, key);
-      boxes.push(boxTemp);
+      let tileTemp = new Tile(i, j, key, tileWidth, tileHeight);
+      tiles.push(tileTemp);
     }
   }
 
@@ -44,16 +44,16 @@ function reset() {
 
   key = createVector(floor(random(gridSize)), floor(random(gridSize)));
 
-  for (let i = 0; i < boxes.length; i++) {
-    boxes[i].generateNewProps(key);
+  for (let i = 0; i < tiles.length; i++) {
+    tiles[i].generateNewProps(key);
   }
 }
 
 function draw() {
   background(220);
 
-  for (let i = 0; i < boxes.length; i++) {
-    boxes[i].draw();
+  for (let i = 0; i < tiles.length; i++) {
+    tiles[i].draw();
   }
 
   rectMode(CENTER);
@@ -73,13 +73,13 @@ function eventMouse() {
   if (found) {
     reset();
   } else {
-    for (let i = 0; i < boxes.length; i++) {
-      if (boxes[i].mouseInside()) {
-        if (!boxes[i].flipped) {
-          boxes[i].flipped = true;
+    for (let i = 0; i < tiles.length; i++) {
+      if (tiles[i].mouseInside()) {
+        if (!tiles[i].flipped) {
+          tiles[i].flipped = true;
           guesses++;
         }
-        if (boxes[i].distKeys == 0) {
+        if (tiles[i].distKeys == 0) {
           found = true;
         }
       }
