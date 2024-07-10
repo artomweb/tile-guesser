@@ -1,6 +1,6 @@
 # tile-guesser
 
-## Play it [HERE](https://artomweb.com/tile-guesser/)
+## Play it [HERE](https://tiles.artomweb.com)
 
 ![filled](images/tg.png)
 
